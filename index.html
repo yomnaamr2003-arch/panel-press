@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel Press — Meme Generator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Permanent+Marker&family=Anton&family=Comic+Neue:wght@400;700&family=Baloo+2:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="halftone-bg" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="wordmark">
+      <span class="wordmark-badge">EST.</span>
+      <h1>Panel Press</h1>
+      <span class="wordmark-badge">No. 01</span>
+    </div>
+    <p class="header-tag">caption it. style it. print it.</p>
+  </header>
+
+  <main class="layout">
+
+    <!-- ===================== CONTROL PANEL ===================== -->
+    <section class="control-panel">
+
+      <div class="panel-block">
+        <h2><span class="step-num">1</span> Pick your canvas</h2>
+
+        <label class="upload-btn" for="file-input">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 16V4M12 4L7 9M12 4L17 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16V18C4 19.1046 4.89543 20 6 20H18C19.1046 20 20 19.1046 20 18V16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Upload your own photo
+        </label>
+        <input type="file" id="file-input" accept="image/*" hidden>
+
+        <p class="or-divider"><span>or choose a starter panel</span></p>
+
+        <div class="template-grid" id="template-grid" role="listbox" aria-label="Starter templates"></div>
+      </div>
+
+      <div class="panel-block">
+        <h2><span class="step-num">2</span> Add your caption</h2>
+
+        <label class="field-label" for="top-text">Top text</label>
+        <input type="text" id="top-text" placeholder="ONE DOES NOT SIMPLY" maxlength="90">
+
+        <label class="field-label" for="bottom-text">Bottom text</label>
+        <input type="text" id="bottom-text" placeholder="WALK INTO MORDOR" maxlength="90">
+      </div>
+
+      <div class="panel-block">
+        <h2><span class="step-num">3</span> Style it</h2>
+
+        <div class="style-row">
+          <div class="style-field">
+            <label class="field-label" for="font-select">Font</label>
+            <select id="font-select">
+              <option value="'Anton', sans-serif" selected>Anton (classic)</option>
+              <option value="Impact, 'Anton', sans-serif">Impact</option>
+              <option value="'Permanent Marker', cursive">Permanent Marker</option>
+              <option value="'Comic Neue', cursive">Comic Neue</option>
+            </select>
+          </div>
+          <div class="style-field">
+            <label class="field-label" for="color-select">Text colour</label>
+            <input type="color" id="color-select" value="#ffffff">
+          </div>
+        </div>
+
+        <label class="field-label" for="size-select">Text size <span id="size-value">48px</span></label>
+        <input type="range" id="size-select" min="20" max="80" value="48">
+
+        <div class="toggle-row">
+          <label class="toggle">
+            <input type="checkbox" id="outline-toggle" checked>
+            <span>Black outline</span>
+          </label>
+          <label class="toggle">
+            <input type="checkbox" id="uppercase-toggle" checked>
+            <span>UPPERCASE</span>
+          </label>
+        </div>
+      </div>
+
+      <button id="download-btn" class="download-btn" type="button">
+        <span>Print it (download)</span>
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V15M12 15L8 11M12 15L16 11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 19H19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+      </button>
+      <p id="download-hint" class="download-hint"></p>
+    </section>
+
+    <!-- ===================== CANVAS STAGE ===================== -->
+    <section class="canvas-stage">
+      <div class="comic-frame">
+        <span class="corner-dot cd-tl"></span>
+        <span class="corner-dot cd-tr"></span>
+        <span class="corner-dot cd-bl"></span>
+        <span class="corner-dot cd-br"></span>
+        <canvas id="meme-canvas" width="640" height="480"></canvas>
+      </div>
+      <div id="sfx-stamp" class="sfx-stamp" aria-hidden="true">PRINTED!</div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built by Yomna Amr &mdash; images are processed entirely in your browser, nothing is uploaded anywhere.</p>
+  </footer>
+
+<script src="script.js"></script>
+</body>
+</html>
